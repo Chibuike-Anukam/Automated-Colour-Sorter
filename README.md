@@ -7,15 +7,29 @@ I used this YouTube video for my inspiration: https://youtu.be/g3i51hdfLaw
 ***Check out his website to see how the colour sorter actually works: https://howtomechatronics.com/projects/arduino-color-sorter-project/
 
 Electronics:
+- 1 TCS3200 Colour Sensor
+- 2 Servo motors
+- Jumper wires
+- 1 Elegoo Arduino Nano microcontroller
+- 1 Switch
+- 1 Power Jack
 
-TCS3200 Colour Sensor
-2 servo motors
-Jumper wires and breadboard
-Elegoo Arduino Nano microcontroller
+Building Materials:
+- Cardboard
+- Straws
+- Pipe cleaners
+- Skewers
+- Cardstock
+- Magnets
+- Hot glue
 
 Results: 
+The colour sensor was finiky, so it was reading the colours wrong. However, when it did read a colour, the bottom servo would rotate to a container. I used pony beads as the test objects and they fit pretty well between the bead conveyer and the stationary platform on the second level. I really enjoyed working on this project! I spent A LOT of time troubleshooting and learned a ton about colour sensors. This project also taught me perseverance and patience, which are key to a successful engineering career.  
 
-It worked!
+Future Plans: 
+I'm thinking of making this into a marketable product. This, of course, is the first prototype. Next, I want to add another colour sensor so that the user can first scan the objects so that the machine can automatically know what colours to sort. Also, I want to add a keypad and LCD (liquid-crystal display) so that the user can input how many colours they want to sort, cancel if they input the wrong number; basically a whole menu system. 
 
-Future Plans: I'm thinking of making this into a marketable product. This, of course, is the first prototype. Next, I want to add another colour sensor so that the user can first scan the objects so that the machine can automatically know what colours to sort. Also, I want to add a keypad and LCD (liquid-crystal display) so that the user can input how many colours they want to sort, cancel if they input the wrong number; basically a whole menu system. 
+Thanks for taking the time to check out my Automated Colour Sorter project! Until next time, keep on dreaming big! 
+
+- Chibuike
 
