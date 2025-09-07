@@ -77,14 +77,12 @@ The prototype successfully demonstrated the core sorting concept:
 ### Development Resources:
 - Tutorial: [How To Mechatronics Arduino Color Sorter](https://howtomechatronics.com/projects/arduino-color-sorter-project/)
 - Video Guide: [YouTube Tutorial](https://youtu.be/g3i51hdfLaw)
-- CAD files, circuit diagram, and code available on referenced website
-
-## Documentation
-Project includes:
-- Arduino code for colour detection and servo control
-- Mechanical assembly instructions
-- Troubleshooting guide for colour sensor issues
-- Design sketches and component specifications
+- The referenced website includes: 
+  - Arduino code for colour detection and servo control
+  - Circuit diagram
+  - Mechanical assembly instructions
+  - Troubleshooting guide for colour sensor issues
+  - Design sketches and component specifications
 
 
 This project demonstrates the integration of electronics and mechanical design for automated sorting applications. While challenges were encountered with sensor reliability, the core concept was successfully validated and provides a foundation for future development.
