@@ -1,7 +1,7 @@
 /*     Arduino Project - Color Sorting Machine with Test Function
  *
  *  Modified to include filter combination testing
- *
+ *  Testing code was made with the help of AI
  */
 #include <Servo.h>
 
