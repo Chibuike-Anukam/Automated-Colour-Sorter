@@ -92,6 +92,7 @@ void loop() {
 }
 
 // Modified readColor() function to accept wider ranges of RGB values to identify different shades of colours
+// Used AI to help make modifications
 int readColor() {
   // Test different filter combinations to find the correct one
   
