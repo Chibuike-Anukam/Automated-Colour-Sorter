@@ -88,4 +88,5 @@ The prototype successfully demonstrated the core sorting concept:
 This project demonstrates the integration of electronics and mechanical design for automated sorting applications. While challenges were encountered with sensor reliability, the core concept was successfully validated and provides a foundation for future development.
 
 Project Creator: Chibuike
+
 Acknowledgment: Special thanks to Dejan from 'How To Mechatronics' for the excellent tutorial and inspiration!
