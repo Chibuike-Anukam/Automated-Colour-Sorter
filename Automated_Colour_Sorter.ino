@@ -91,61 +91,99 @@ void loop() {
   color=0;
 }
 
-// Custom Function - readColor()
+// Modified readColor() function to accept wider ranges of RGB values to identify different shades of colours
 int readColor() {
-  // Setting red filtered photodiodes to be read
-  digitalWrite(S2, LOW);
-  digitalWrite(S3, LOW);
-  // Reading the output frequency
-  frequency = pulseIn(sensorOut, LOW);
+  // Test different filter combinations to find the correct one
+  
+  // Try RED filter (original was S2=LOW, S3=LOW)
+  digitalWrite(S2, LOW);  // Changed from LOW
+  digitalWrite(S3, LOW);  // Changed from LOW  
+  frequency = pulseIn(sensorOut, LOW, 50000);
   int R = frequency;
-  // Printing the value on the serial monitor
-  Serial.print("R= ");//printing name
-  Serial.print(frequency);//printing RED color frequency
+  Serial.print("R= ");
+  Serial.print(frequency);
   Serial.print("  ");
   delay(50);
 
-  // Setting Green filtered photodiodes to be read
-  digitalWrite(S2, HIGH);
-  digitalWrite(S3, HIGH);
-  // Reading the output frequency
-  frequency = pulseIn(sensorOut, LOW);
+  // Try GREEN filter (original was S2=HIGH, S3=HIGH) 
+  digitalWrite(S2, HIGH);   // Changed from HIGH
+  digitalWrite(S3, HIGH);   // Changed from HIGH
+  frequency = pulseIn(sensorOut, LOW, 50000);
   int G = frequency;
-  // Printing the value on the serial monitor
-  Serial.print("G= ");//printing name
-  Serial.print(frequency);//printing RED color frequency
+  Serial.print("G= ");
+  Serial.print(frequency);
   Serial.print("  ");
   delay(50);
 
-  // Setting Blue filtered photodiodes to be read
-  digitalWrite(S2, LOW);
-  digitalWrite(S3, HIGH);
-  // Reading the output frequency
-  frequency = pulseIn(sensorOut, LOW);
+  // Try BLUE filter (original was S2=LOW, S3=HIGH)
+  digitalWrite(S2, LOW);  // Changed from LOW
+  digitalWrite(S3, HIGH);   // Changed from HIGH
+  frequency = pulseIn(sensorOut, LOW, 50000);
   int B = frequency;
-  // Printing the value on the serial monitor
-  Serial.print("B= ");//printing name
-  Serial.print(frequency);//printing RED color frequency
+  Serial.print("B= ");
+  Serial.print(frequency);
   Serial.println("  ");
   delay(50);
 
-  if(R<45 & R>32 & G<65 & G>55){
+  // Rest of your color detection logic stays the same
+  Serial.print("RGB Values: R=");
+  Serial.print(R);
+  Serial.print(" G=");
+  Serial.print(G);
+  Serial.print(" B=");
+  Serial.print(B);
+
+  if(R == 0 && G == 0 && B == 0) {
+    Serial.println(" -> No reading!");
+    return 0;
+  }
+
+  color = 0;
+
+  // Use percentage method for better reliability
+  int total = R + G + B;
+  if(total == 0) return 0;
+  
+  float redPercent = (float)R / total * 100;
+  float greenPercent = (float)G / total * 100;
+  float bluePercent = (float)B / total * 100;
+  
+  Serial.print(" Percentages: R=");
+  Serial.print(redPercent);
+  Serial.print("% G=");
+  Serial.print(greenPercent);
+  Serial.print("% B=");
+  Serial.print(bluePercent);
+  Serial.print("%");
+
+  if(redPercent > 40 && redPercent > greenPercent && redPercent > bluePercent) {
     color = 1; // Red
+    Serial.println(" -> RED");
   }
-  if(G<55 & G>43 & B<47 &B>35){
-    color = 2; // Orange
-  }
-  if(R<53 & R>40 & G<53 & G>40){
+  else if(greenPercent > 40 && greenPercent > redPercent && greenPercent > bluePercent) {
     color = 3; // Green
+    Serial.println(" -> GREEN");
   }
-  if(R<38 & R>24 & G<44 & G>30){
-    color = 4; // Yellow
-  }
-  if(R<56 & R>46 & G<65 & G>55){
-    color = 5; // Brown
-  }
-  if (G<58 & G>45 & B<40 &B>26){
+  else if(bluePercent > 40 && bluePercent > redPercent && bluePercent > greenPercent) {
     color = 6; // Blue
+    Serial.println(" -> BLUE");
   }
+  else if(redPercent > 30 && greenPercent > 30 && bluePercent < 20) {
+    color = 4; // Yellow
+    Serial.println(" -> YELLOW");
+  }
+  else if(redPercent > greenPercent && greenPercent > bluePercent && redPercent > 25) {
+    color = 2; // Orange
+    Serial.println(" -> ORANGE");
+  }
+  else if(redPercent > 25 && greenPercent > 25 && bluePercent > 25) {
+    color = 5; // Brown/Dark
+    Serial.println(" -> BROWN");
+  }
+  else {
+    color = 0;
+    Serial.println(" -> UNKNOWN");
+  }
+  
   return color;  
 }
